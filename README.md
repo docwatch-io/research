@@ -1,6 +1,7 @@
-# DocWatch Healthcare Provider Consolidation Dataset
+# docwatch.io Healthcare Provider Consolidation Dataset
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/badge/website-docwatch.io-blue)](https://docwatch.io)
 
 > **Complete historical dataset of healthcare provider consolidation (2007-2025)**
 >
@@ -10,7 +11,7 @@
 
 ## Overview
 
-This repository provides a **self-hosted PostgreSQL database** containing the complete DocWatch healthcare provider consolidation dataset. The database uses Slowly Changing Dimension (SCD) Type 2 architecture to track provider information changes over time, enabling both current snapshot queries and full historical lineage analysis.
+This repository provides a **self-hosted PostgreSQL database** containing the complete [docwatch.io](https://docwatch.io) healthcare provider consolidation dataset. The database uses Slowly Changing Dimension (SCD) Type 2 architecture to track provider information changes over time, enabling both current snapshot queries and full historical lineage analysis.
 
 **Key Features:**
 - ✅ **18 years of data**: 2007-2025 (annual 2007-2017, monthly 2017-2025)
@@ -30,7 +31,7 @@ This repository provides a **self-hosted PostgreSQL database** containing the co
 - **Docker Desktop** installed ([Download](https://www.docker.com/products/docker-desktop))
 - **150 GB free disk space** (100GB for data, 50GB for working space)
 - **8GB+ RAM recommended** (4GB minimum)
-- **Approved access** from DocWatch team (you'll receive a time-limited S3 download URL)
+- **Approved access** from [docwatch.io](https://docwatch.io) team (you'll receive a time-limited S3 download URL)
 
 ### Installation
 
@@ -41,7 +42,7 @@ cd research
 
 # 2. Configure environment
 cp .env.example .env
-nano .env  # Add S3_SIGNED_URL from DocWatch team
+nano .env  # Add S3_SIGNED_URL from docwatch.io team
 
 # 3. Download data (~35-45GB compressed, 10-30 min)
 ./scripts/download_data.sh
@@ -384,7 +385,7 @@ S3_SIGNED_URL=https://docwatch-research-data.s3.amazonaws.com/warehouse_export.s
 **Notes:**
 - URLs expire after 7 days
 - Keep URL private (contains auth tokens)
-- Contact DocWatch team if URL expires
+- Contact [docwatch.io team](https://docwatch.io) if URL expires
 
 ### Step 3: Download Data
 
@@ -601,7 +602,7 @@ WHERE p1.effective_date < COALESCE(p2.end_date, '9999-12-31')
 When using this dataset in research, please cite:
 
 ```
-DocWatch Healthcare Provider Consolidation Dataset (2007-2025)
+docwatch.io Healthcare Provider Consolidation Dataset (2007-2025)
 Available at: https://github.com/docwatch-io/research
 Accessed: [DATE]
 ```
@@ -610,7 +611,7 @@ Accessed: [DATE]
 
 ```bibtex
 @misc{docwatch2025dataset,
-  author = {{DocWatch Research Team}},
+  author = {{docwatch.io Research Team}},
   title = {NPPES Provider Network Longitudinal Dataset (2007-2025)},
   year = {2025},
   version = {1.0},
@@ -638,6 +639,7 @@ See `CITATION.cff` for additional formats.
 
 ## Support
 
+- **Website**: [docwatch.io](https://docwatch.io)
 - **GitHub Issues**: https://github.com/docwatch-io/research/issues
 - **Email**: research@docwatch.io
 
@@ -655,6 +657,9 @@ A: Yes! Please cite the dataset and share preprints with us.
 **Q: What if I need custom aggregations?**
 A: Contact research@docwatch.io for collaboration opportunities.
 
+**Q: Is this the same data powering docwatch.io?**
+A: Yes, this is a snapshot of the production warehouse data from [docwatch.io](https://docwatch.io), updated quarterly.
+
 ---
 
 ## Acknowledgments
@@ -663,7 +668,7 @@ A: Contact research@docwatch.io for collaboration opportunities.
 
 **Community Detection**: Leiden algorithm (Traag, Waltman, & van Eck, 2019)
 
-**Funding**: Self-funded by DocWatch (no conflicts of interest)
+**Funding**: Self-funded by [docwatch.io](https://docwatch.io) (no conflicts of interest)
 
 ---
 
