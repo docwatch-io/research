@@ -166,21 +166,26 @@ LIMIT 20;
 
 **Example query:**
 ```sql
--- Get all providers at Mayo Clinic Rochester
+-- Get all providers who work at the Mayo Clinic
 SELECT
     p.npi,
+    p.basic,
+    p.enumeration_type,
     p.basic->>'first_name' as first_name,
     p.basic->>'last_name' as last_name,
     pos.facility_name,
     pos.city,
     pos.state
 FROM warehouse.provider p
-JOIN warehouse.community c ON p.npi = c.npi AND p.is_current = c.is_current
+JOIN warehouse.community c ON p.npi = c.npi
 JOIN warehouse.place_of_service pos ON c.canonical_community_id = pos.ccn
-WHERE c.is_current = true
-  AND pos.is_current = true
-  AND pos.ccn = '240003';  -- Mayo Clinic Rochester
-```
+WHERE 
+  pos.facility_name like '%MAYO CLINIC%'
+  and p.enumeration_type = 'NPI-1'
+  and pos.state = 'MN'
+  and p.is_current=true
+;
+  ```
 
 ### Point-in-Time Queries
 
@@ -190,9 +195,10 @@ Query provider state at any historical date:
 -- Provider state on January 1, 2020
 SELECT *
 FROM warehouse.provider
-WHERE npi = '1234567890'
+WHERE npi = '1134194152'
   AND effective_date <= '2020-01-01'
   AND (end_date > '2020-01-01' OR end_date IS NULL);
+
 
 -- Community membership on January 1, 2020
 SELECT
@@ -201,7 +207,7 @@ SELECT
     pos.facility_name
 FROM warehouse.community c
 JOIN warehouse.place_of_service pos ON c.canonical_community_id = pos.ccn
-WHERE c.npi = '1234567890'
+WHERE c.npi = '1134194152'
   AND c.effective_date <= '2020-01-01'
   AND (c.end_date > '2020-01-01' OR c.end_date IS NULL)
   AND pos.effective_date <= '2020-01-01'
