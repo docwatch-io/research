@@ -1,0 +1,106 @@
+# DocWatch Research .gitignore
+
+# Environment variables (contains S3 URLs and credentials)
+.env
+
+# Downloaded data files (large, provided via S3)
+data/warehouse_export.sql
+data/warehouse_export.sql.gz
+data/*.sql
+data/*.gz
+scripts/export_for_researchers.sh
+IMPLEMENTATION_SUMMARY.md
+
+# Temporary export directory (used by export script)
+/tmp/docwatch-research-export/
+
+# PostgreSQL data (persisted in Docker volumes)
+postgres_data/
+*.pgsql
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# R
+.Rhistory
+.RData
+.Rproj.user
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.settings/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# Research outputs (keep local, don't commit)
+outputs/
+results/
+analysis/
+*.csv
+*.xlsx
+*.pdf
+*.png
+*.jpg
+*.html
+
+# Docker volumes
+docker-compose.override.yml
+
+# Presigned URLs (sensitive)
+presigned_url.txt
+checksums.txt

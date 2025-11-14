@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this dataset in your research, please cite it as below."
+type: dataset
+title: "NPPES Provider Network Longitudinal Dataset (2007-2025)"
+abstract: "Longitudinal dataset tracking healthcare provider consolidation using network analysis on 18 years of CMS NPPES data. Includes 5M+ NPIs, 2.5M communities, pre-calculated consolidation indices (HHI, churn rates, geographic patterns), and complete temporal coverage from 2007-2025."
+authors:
+  - name: "DocWatch Research Team"
+    email: research@docwatch.io
+    website: https://docwatch.io
+version: "1.0"
+date-released: 2025-11-12
+url: "https://github.com/docwatch-io/research"
+repository-code: "https://github.com/docwatch-io/research"
+keywords:
+  - healthcare consolidation
+  - provider networks
+  - health economics
+  - NPPES
+  - network analysis
+  - Leiden algorithm
+  - market concentration
+  - physician employment
+  - hospital systems
+  - longitudinal data
+  - health policy
+  - industrial organization
+  - labor economics
