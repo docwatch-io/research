@@ -84,8 +84,14 @@ echo ""
 # Start timer
 START_TIME=$(date +%s)
 
-# Load data using docker compose exec
-# This pipes the SQL file into the container's psql
+# Step 1: Load schema (creates warehouse schema and tables)
+echo "Loading schema..."
+cat "$PROJECT_DIR/schema.sql" | docker compose exec -T postgres psql -U "$POSTGRES_USER" -d "$POSTGRES_DB"
+echo -e "${GREEN}✓${NC} Schema loaded"
+echo ""
+
+# Step 2: Load data
+echo "Loading data (this will take a while)..."
 cat "$DECOMPRESSED_FILE" | docker compose exec -T postgres psql -U "$POSTGRES_USER" -d "$POSTGRES_DB"
 
 # End timer
